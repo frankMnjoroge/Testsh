@@ -144,7 +144,7 @@ int repl_vars(info_t *info)
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int repl_string(char **old, char *new)
+int repl_str(char **old, char *new)
 {
 	free(*old);
 	*old = new;

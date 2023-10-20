@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * str_to_words - splits a string into words. Repeat delimiters are ignored
  * @str: the input string
