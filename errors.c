@@ -1,13 +1,12 @@
 #include "shell.h"
 
 /**
- * _outputCharacter - writes the character c to stderr
- * @c: The character to print
+ * _outputString - prints an input string
+ * @str: the string to be printed
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: Nothing
  */
-void _outputCharacter(char *str)
+void _outputString(char *str)
 {
 	int i = 0;
 
@@ -15,18 +14,19 @@ void _outputCharacter(char *str)
 		return;
 	while (str[i] != '\0')
 	{
-		_eputchar(str[i]);
+		_outputCharacter(str[i]);
 		i++;
 	}
 }
 
 /**
- * _outputString - prints an input string
- * @str: the string to be printed
+ * _outputCharacter - writes the character c to stderr
+ * @c: The character to print
  *
- * Return: Nothing
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int _outputString(char c)
+int _outputCharacter(char c)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];

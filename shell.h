@@ -125,8 +125,8 @@ char *find_path(info_t *, char *, char *);
 int main(int ac, char **av);
 
 /* errors.c */
-void _outputString(char *);
 int _outputCharacter(char);
+void _outputString(char *);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
@@ -221,7 +221,7 @@ void free_list(list_t **);
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
 size_t print_list(const list_t *);
-list_t *my_starts_with(list_t *, char *, char);
+list_t *my_node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* vars.c */

@@ -36,13 +36,13 @@ int _convert_str_to_int(char *s)
  */
 void _print_error_message(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	_outputString(info->fname);
+	_outputString(": ");
+	print_decimal(info->line_count, STDERR_FILENO);
+	_outputString(": ");
+	_outputString(info->argv[0]);
+	_outputString(": ");
+	_outputString(estr);
 }
 
 /**
@@ -58,7 +58,7 @@ int print_decimal(int input, int fd)
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
+		__putchar = _outputCharacter;
 	if (input < 0)
 	{
 		_abs_ = -input;

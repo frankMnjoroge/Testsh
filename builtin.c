@@ -12,16 +12,16 @@ int _myexit(info_t *info)
 
 	if (info->argv[1]) /* If there is an exit arguement */
 	{
-		exitcheck = _erratoi(info->argv[1]);
+		exitcheck = _convert_str_to_int(info->argv[1]);
 		if (exitcheck == -1)
 		{
 			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
+			_print_error_message(info, "Illegal number: ");
+			_outputString(info->argv[1]);
+			_outputCharacter('\n');
 			return (1);
 		}
-		info->err_num = _erratoi(info->argv[1]);
+		info->err_num = _convert_str_to_int(info->argv[1]);
 		return (-2);
 	}
 	info->err_num = -1;
@@ -51,7 +51,7 @@ int _mycd(info_t *info)
 		else
 			chdir_ret = chdir(dir);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (str_compare(info->argv[1], "-") == 0)
 	{
 		if (!_getenv(info, "OLDPWD="))
 		{
@@ -67,8 +67,8 @@ int _mycd(info_t *info)
 		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
-		print_error(info, "can't cd to ");
-		_eputs(info->argv[1]), _eputchar('\n');
+		_print_error_message(info, "can't cd to ");
+		_outputString(info->argv[1]), _outputCharacter('\n');
 	}
 	else
 	{
