@@ -7,7 +7,7 @@
  *
  * Return: pointer to destination
  */
-char _strcpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
 
@@ -28,7 +28,7 @@ char _strcpy(char *dest, char *src)
  *
  * Return: pointer to the duplicated string
  */
-char _strdup(const char *str)
+char *_strdup(const char *str)
 {
 	int length = 0;
 	char *ret;

@@ -6,7 +6,7 @@
  * @n: the amount of bytes to be filled
  * Return: (s) a pointer to the memory area s
  */
-char _mem_set(char *s, char b, unsigned int n)
+char*_mem_set(char *s, char b, unsigned int n)
 {
 	unsigned int i;
 
@@ -37,7 +37,7 @@ void str_free(char **pp)
  * @new_size: byte size of new block
  * Return: pointer to da ol'block nameen.
  */
-void _reallocate(void *ptr, unsigned int old_size, unsigned int new_size)
+void *_reallocate(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *p;
 

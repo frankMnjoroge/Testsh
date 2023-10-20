@@ -3,17 +3,17 @@
 
 /**
  * _convert_str_to_int - converts a string to an integer
- * @str: the string to be converted
+ * @s: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  * -1 on error
  */
-int _convert_str_to_int(char *str)
+int _convert_str_to_int(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
+		s++;
 	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -32,9 +32,9 @@ int _convert_str_to_int(char *str)
 /**
  * _print_error_message - prints an error message
  * @info: the parameter & return info struct
- * @error_str: string containing specified error type
+ * @estr: string containing specified error type
  */
-void _print_error_message(info_t *info, char *error_str)
+void _print_error_message(info_t *info, char *estr)
 {
 	_outputString(info->fname);
 	_outputString(": ");

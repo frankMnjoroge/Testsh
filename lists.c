@@ -16,7 +16,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 	new_head = malloc(sizeof(list_t));
 	if (!new_head)
 		return (NULL);
-	_memset((void *)new_head, 0, sizeof(list_t));
+	_mem_set((void *)new_head, 0, sizeof(list_t));
 	new_head->num = num;
 	if (str)
 	{
