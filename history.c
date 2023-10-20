@@ -6,14 +6,14 @@
  *
  * Return: allocated string containing history file
  */
-char retrieve_history_file(info_t *info)
+char *retrieve_history_file(info_t *info)
 {
 	char *buf, *dir;
 
 	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (str_length(dir) + str_length(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
@@ -32,7 +32,7 @@ char retrieve_history_file(info_t *info)
 int save_history(info_t *info)
 {
 	ssize_t fd;
-	char *filename = get_history_file(info);
+	char *filename = retrieve_history_file(info);
 	list_t *node = NULL;
 
 	if (!filename)
@@ -63,7 +63,7 @@ int load_history(info_t *info)
 	int i, last = 0, linecount = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buf = NULL, *filename = get_history_file(info);
+	char *buf = NULL, *filename = retrieve_history_file(info);
 
 	if (!filename)
 		return (0);
@@ -88,11 +88,11 @@ int load_history(info_t *info)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;
-			build_history_list(info, buf + last, linecount++);
+			record_history_list(info, buf + last, linecount++);
 			last = i + 1;
 		}
 	if (last != i)
-		build_history_list(info, buf + last, linecount++);
+		record_history_list(info, buf + last, linecount++);
 	free(buf);
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
