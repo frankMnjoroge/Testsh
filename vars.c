@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * is_chain_internal - test if current character in buffer is chain delimiter
  * @info: the parameter struct
@@ -81,11 +83,11 @@ int repl_alias(info_t *info)
 
 	for (i = 0; i < 10; i++)
 	{
-		node = node_starts_with(info->alias, info->argv[0], '=');
+		node = my_node_starts_with(info->alias, info->argv[0], '=');
 		if (!node)
 			return (0);
 		free(info->argv[0]);
-		p = _strchr(node->str, '=');
+		p = my_strchr(node->str, '=');
 		if (!p)
 			return (0);
 		p = _strdup(p + 1);
@@ -112,26 +114,26 @@ int repl_vars(info_t *info)
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
 
-		if (!_strcmp(info->argv[i], "$?"))
+		if (!str_compare(info->argv[i], "$?"))
 		{
-			replace_string(&(info->argv[i]),
-					_strdup(convert_number(info->status, 10, 0)));
+			repl_str(&(info->argv[i]),
+					_strdup(convert_num_to_str(info->status, 10, 0)));
 			continue;
 		}
-		if (!_strcmp(info->argv[i], "$$"))
+		if (!str_compare(info->argv[i], "$$"))
 		{
-			replace_string(&(info->argv[i]),
-					_strdup(convert_number(getpid(), 10, 0)));
+			repl_str(&(info->argv[i]),
+					_strdup(convert_num_to_str(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_starts_with(info->env, &info->argv[i][1], '=');
+		node = my_node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
-			replace_string(&(info->argv[i]),
-					_strdup(_strchr(node->str, '=') + 1));
+			repl_str(&(info->argv[i]),
+					_strdup(str_compare(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&info->argv[i], _strdup(""));
+		repl_str(&info->argv[i], _strdup(""));
 
 	}
 	return (0);
