@@ -7,7 +7,7 @@
  * Return: 0 if no numbers in string, converted number otherwise
  * -1 on error
  */
-int _convert_str_to_int(char *s)
+int _convert_str_to_int(char *str)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -34,7 +34,7 @@ int _convert_str_to_int(char *s)
  * @info: the parameter & return info struct
  * @error_str: string containing specified error type
  */
-void _print_error_message(info_t *info, char *estr)
+void _print_error_message(info_t *info, char *error_str)
 {
 	_outputString(info->fname);
 	_outputString(": ");
