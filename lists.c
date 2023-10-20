@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * add_node - adds a node to the beginning of the list
  * @head: address of pointer to the head node
