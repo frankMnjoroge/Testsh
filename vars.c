@@ -130,7 +130,8 @@ int repl_vars(info_t *info)
 		if (node)
 		{
 			repl_str(&(info->argv[i]),
-					_strdup(str_compare(node->str, '=') + 1));
+
+					_strdup(my_strchr(node->str, '=') + 1));
 			continue;
 		}
 		repl_str(&info->argv[i], _strdup(""));
@@ -138,7 +139,6 @@ int repl_vars(info_t *info)
 	}
 	return (0);
 }
-
 /**
  * repl_str - replaces a string
  * @old: address of the old string
