@@ -1,5 +1,4 @@
 #include "shell.h"
-#include <errno.h>
 
 /**
  * hsh_loop - main shell loop
