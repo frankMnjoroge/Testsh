@@ -6,7 +6,7 @@
  * @n: the amount of bytes to be filled
  * Return: (s) a pointer to the memory area s
  */
-char*_mem_set(char *s, char b, unsigned int n)
+char *_mem_set(char *s, char b, unsigned int n)
 {
 	unsigned int i;
 

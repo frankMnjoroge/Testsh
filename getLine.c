@@ -1,10 +1,9 @@
 #include "shell.h"
-
 /**
  * ibuf - buffers chained commands
- * @i: parameter struct
- * @b: address of buffer
- * @l: address of len var
+ * @info: parameter struct
+ * @buf: address of buffer
+ * @len: address of len var
  *
  * Return: bytes read
  */
@@ -46,7 +45,7 @@ ssize_t ibuf(info_t *info, char **buf, size_t *len)
 
 /**
  * g_input - gets a line minus the newline
- * @i: parameter struct
+ * @info: parameter struct
  *
  * Return: bytes read
  */
@@ -91,9 +90,9 @@ ssize_t g_input(info_t *info)
 
 /**
  * rbuf - reads a buffer
- * @i: parameter struct
- * @b: buffer
- * @x: size
+ * @info: parameter struct
+ * @buf: buffer
+ * @i: size
  *
  * Return: r
  */
@@ -111,8 +110,8 @@ ssize_t rbuf(info_t *info, char *buf, size_t *i)
 
 /**
  * gl - gets the next line of input from STDIN
- * @i: parameter struct
- * @p: address of pointer to buffer, preallocated or NULL
+ * @info: parameter struct
+ * @ptr: address of pointer to buffer, preallocated or NULL
  * @length: size of preallocated ptr buffer if not NULL
  *
  * Return: s
@@ -158,7 +157,7 @@ int gl(info_t *info, char **ptr, size_t *length)
 
 /**
  * sHandler - blocks ctrl-C
- * @sn: the signal number
+ * @sig_num: the signal number
  *
  * Return: void
  */
